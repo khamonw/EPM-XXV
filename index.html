@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="EPM XXV — official music, visuals, releases and contact.">
+  <title>EPM XXV — Official Artist Website</title>
+  <style>
+    :root {
+      --bg: #090909; --panel: #121011; --red: #ed2638;
+      --red-dark: #76121c; --white: #f5f2ef; --muted: #a8a1a1;
+      --line: rgba(255,255,255,.13); --max: 1240px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--bg); color: var(--white);
+      font-family: Inter, "Helvetica Neue", Arial, sans-serif; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
+      opacity: .10; z-index: 5; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(9,9,9,.84);
+      backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-size: 17px; font-weight: 950; letter-spacing: .22em; white-space: nowrap; }
+    .brand span { color: var(--red); }
+    .navlinks { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 32px); }
+    .navlinks a { color: #d6d0d0; font-size: 10px; letter-spacing: .17em; font-weight: 800; transition: color .2s; }
+    .navlinks a:hover { color: var(--red); }
+    .menu-btn { display: none; background: none; color: white; border: 1px solid var(--line); padding: 10px 12px; }
+    .hero { min-height: min(820px, calc(100svh - 76px)); position: relative; overflow: hidden;
+      display: flex; align-items: center; border-bottom: 1px solid var(--line);
+      background: radial-gradient(ellipse at 78% 45%, rgba(180,12,30,.28), transparent 38%),
+                  linear-gradient(110deg, #090909 15%, #14090b 60%, #090909 100%); }
+    .hero-photo { position: absolute; inset: 0 0 0 35%; width: 65%; height: 100%; object-fit: cover;
+      object-position: center; opacity: .28; mix-blend-mode: screen; filter: grayscale(1) contrast(1.15);
+      mask-image: linear-gradient(90deg, transparent, black 35%, black 70%, transparent); }
+    .hero::after { content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, #090909 5%, rgba(9,9,9,.83) 42%, rgba(9,9,9,.15) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 100px 0; }
+    .eyebrow { color: var(--red); font-size: 10px; font-weight: 900; letter-spacing: .35em; text-transform: uppercase; }
+    h1 { font-size: clamp(78px, 15vw, 190px); line-height: .76; letter-spacing: -.095em; margin: 30px 0 32px;
+      font-weight: 1000; text-transform: uppercase; }
+    h1 span { display: block; color: var(--red); margin-top: .13em; }
+    .hero-copy { max-width: 440px; color: #c3babb; font-size: 14px; line-height: 1.85; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 21px; border: 1px solid var(--red); background: var(--red);
+      color: white; font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase;
+      transition: transform .2s, background .2s, border-color .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-3px); background: #bd1728; border-color: #bd1728; }
+    .btn.ghost { background: transparent; border-color: var(--line); }
+    .btn.ghost:hover { border-color: var(--red); }
+    .hero-index { position: absolute; right: 4%; bottom: 34px; z-index: 2; color: #8f8586; font-size: 10px; letter-spacing: .2em; }
+    .ticker { overflow: hidden; border-bottom: 1px solid var(--line); background: #10090a; }
+    .ticker-track { display: flex; width: max-content; animation: ticker 24s linear infinite; padding: 16px 0; }
+    .ticker-track span { font-size: 11px; font-weight: 900; letter-spacing: .24em; margin-right: 34px; white-space: nowrap; }
+    .ticker-track b { color: var(--red); margin-left: 34px; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+    section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 38px; }
+    .section-no { color: var(--red); font-size: 10px; font-weight: 900; letter-spacing: .25em; }
+    h2 { font-size: clamp(40px, 7vw, 78px); line-height: .9; letter-spacing: -.065em; margin: 14px 0 0; text-transform: uppercase; }
+    .section-note { max-width: 330px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .music-grid { display: grid; grid-template-columns: minmax(240px, .9fr) 1.1fr; gap: 22px; }
+    .cover { min-height: 360px; position: relative; overflow: hidden; background:
+      radial-gradient(circle at 70% 25%, rgba(237,38,56,.65), transparent 26%),
+      linear-gradient(145deg, #381017, #090909 65%); border: 1px solid var(--line);
+      display: flex; flex-direction: column; justify-content: space-between; padding: 26px; }
+    .cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; filter: grayscale(1); }
+    .cover > *:not(img) { position: relative; z-index: 1; }
+    .cover-mark { font-weight: 1000; font-size: clamp(54px, 8vw, 100px); line-height: .78; letter-spacing: -.08em; }
+    .cover-mark span { color: var(--red); }
+    .cover-bottom { display: flex; justify-content: space-between; align-items: end; gap: 16px; font-size: 10px; letter-spacing: .2em; }
+    .track-panel { border: 1px solid var(--line); background: var(--panel); padding: clamp(20px, 4vw, 38px); display: flex; flex-direction: column; justify-content: center; }
+    .track-panel h3 { font-size: 25px; margin: 10px 0; }
+    .muted { color: var(--muted); font-size: 12px; line-height: 1.8; }
+    audio { width: 100%; margin: 20px 0 10px; accent-color: var(--red); }
+    .track-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .small-link { display: inline-block; color: var(--white); border: 1px solid var(--line); padding: 12px 14px; font-size: 10px; letter-spacing: .12em; font-weight: 800; }
+    .small-link:hover { border-color: var(--red); color: var(--red); }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .gallery-item { border: 1px solid var(--line); background: #171313; position: relative; overflow: hidden; aspect-ratio: 4 / 5; cursor: zoom-in; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); transition: transform .6s, filter .6s; }
+    .gallery-item:hover img { transform: scale(1.05); filter: grayscale(.25); }
+    .gallery-item figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 16px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,.9)); font-size: 10px; letter-spacing: .15em; }
+    .placeholder { min-height: 100%; display: grid; place-items: center; padding: 20px; color: #b6a9aa; text-align: center; font-size: 11px; line-height: 1.8; }
+    .video-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; }
+    .video-box { background: #111; border: 1px solid var(--line); }
+    .video-frame { position: relative; aspect-ratio: 16/9; background: #18090c; }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-placeholder { display: grid; place-items: center; height: 100%; padding: 20px; color: var(--muted); font-size: 12px; text-align: center; }
+    .video-caption { padding: 17px 19px; font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+    .streaming-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stream-card { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px;
+      border: 1px solid var(--line); background: var(--panel); transition: border-color .2s, transform .2s; }
+    .stream-card:hover { border-color: var(--red); transform: translateY(-3px); }
+    .stream-card strong { display: block; font-size: 18px; margin-bottom: 6px; }
+    .stream-card span { color: var(--muted); font-size: 11px; }
+    .arrow { color: var(--red); font-size: 24px; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: start; }
+    .about-stamp { border: 1px solid var(--red); color: var(--red); padding: 28px; font-weight: 1000; font-size: 46px; line-height: .9; letter-spacing: -.07em; }
+    .about-text { color: #c4bdbd; line-height: 2; font-size: 14px; max-width: 650px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; }
+    .contact-form { display: grid; gap: 12px; }
+    .contact-form input, .contact-form textarea { width: 100%; color: white; background: #121011; border: 1px solid var(--line); padding: 15px; outline: none; border-radius: 0; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--red); }
+    .contact-form textarea { min-height: 130px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: 11px; line-height: 1.7; }
+    footer { padding: 30px 0; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; align-items: center; color: var(--muted); font-size: 10px; letter-spacing: .12em; }
+    .socials { display: flex; flex-wrap: wrap; gap: 16px; }
+    .socials a:hover { color: var(--red); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.92); align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: min(100%, 1000px); max-height: 85vh; object-fit: contain; }
+    .lightbox button { position: absolute; top: 20px; right: 24px; color: white; background: transparent; border: 1px solid var(--line); padding: 12px 16px; cursor: pointer; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: min(calc(100% - 32px), var(--max)); }
+      nav { min-height: 66px; }
+      .menu-btn { display: block; }
+      .navlinks { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 20px 24px; background: #0c0a0a; border-bottom: 1px solid var(--line); flex-direction: column; align-items: start; }
+      .navlinks.open { display: flex; }
+      .navlinks a { padding: 8px 0; }
+      .hero { min-height: 690px; }
+      .hero-photo { left: 5%; width: 95%; opacity: .2; }
+      .hero-content { padding: 80px 0; }
+      h1 { font-size: clamp(78px, 20vw, 130px); }
+      section { padding: 72px 0; }
+      .section-head { align-items: start; flex-direction: column; }
+      .music-grid, .video-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .cover { min-height: 300px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .streaming-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 25px; }
+      .about-stamp { max-width: 240px; }
+      .footer-row { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="EPM XXV home">EPM <span>XXV</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navlinks">MENU ☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#music">MUSIC</a><a href="#gallery">GALLERY</a><a href="#videos">VIDEOS</a>
+        <a href="#listen">STREAM</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-photo" src="assets/images/hero.jpg" alt="" onerror="this.style.display='none'">
+      <div class="wrap hero-content reveal">
+        <div class="eyebrow">Independent artist · Official website</div>
+        <h1>EPM <span>XXV.</span></h1>
+        <p class="hero-copy">Born from chaos. Made of sound. Step inside the world of EPM XXV — music, visuals and everything in between.</p>
+        <div class="actions">
+          <a class="btn" href="#music">Explore the music ↘</a>
+          <a class="btn ghost" href="#videos">Watch visuals ↗</a>
+        </div>
+      </div>
+      <div class="hero-index">ARTIST / MUSIC / VISUALS — 001</div>
+    </section>
+
+    <div class="ticker" aria-label="EPM XXV artist banner">
+      <div class="ticker-track" aria-hidden="true">
+        <span>EPM XXV <b>✳</b> INDEPENDENT SOUND <b>✳</b> VISUAL CULTURE <b>✳</b> MADE FROM CHAOS <b>✳</b></span>
+        <span>EPM XXV <b>✳</b> INDEPENDENT SOUND <b>✳</b> VISUAL CULTURE <b>✳</b> MADE FROM CHAOS <b>✳</b></span>
+      </div>
+    </div>
+
+    <section id="music">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-no">01 / THE SOUND</div><h2>Latest<br>release.</h2></div>
+          <p class="section-note">Add your own track below. The audio player plays a file you upload to your website repository.</p>
+        </div>
+        <div class="music-grid reveal">
+          <div class="cover">
+            <img src="assets/images/cover.jpg" alt="EPM XXV release artwork" onerror="this.style.display='none'">
+            <div class="eyebrow">EPM XXV · RELEASE 001</div>
+            <div class="cover-mark">EPM<br><span>XXV</span></div>
+            <div class="cover-bottom"><span>OFFICIAL RELEASE</span><span>MMXXV+</span></div>
+          </div>
+          <div class="track-panel">
+            <div class="section-no">NOW PLAYING / YOUR MUSIC</div>
+            <h3 id="trackTitle">Your Track Title</h3>
+            <p class="muted">Replace the sample file path with your own MP3. No music is included in this starter template.</p>
+            <audio id="audioPlayer" controls preload="none">
+              <source src="assets/music/track-01.mp3" type="audio/mpeg">
+              Your browser does not support audio playback.
+            </audio>
+            <div class="track-actions">
+              <a class="small-link" id="youtubeMusic" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a>
+              <a class="small-link" id="spotifyMusic" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">SPOTIFY ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-no">02 / THE VISUALS</div><h2>Frames from<br>my world.</h2></div>
+          <p class="section-note">Put your own photos in assets/images and use the filenames shown below. Tap any photo to view it larger.</p>
+        </div>
+        <div class="gallery reveal">
+          <figure class="gallery-item"><img src="assets/images/photo-01.jpg" alt="EPM XXV photo 1" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>ADD PHOTO<br>photo-01.jpg</div>'"><figcaption>01 — PORTRAIT</figcaption></figure>
+          <figure class="gallery-item"><img src="assets/images/photo-02.jpg" alt="EPM XXV photo 2" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>ADD PHOTO<br>photo-02.jpg</div>'"><figcaption>02 — BACKSTAGE</figcaption></figure>
+          <figure class="gallery-item"><img src="assets/images/photo-03.jpg" alt="EPM XXV photo 3" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>ADD PHOTO<br>photo-03.jpg</div>'"><figcaption>03 — EDITORIAL</figcaption></figure>
+          <figure class="gallery-item"><img src="assets/images/photo-04.jpg" alt="EPM XXV photo 4" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>ADD PHOTO<br>photo-04.jpg</div>'"><figcaption>04 — LIVE</figcaption></figure>
+          <figure class="gallery-item"><img src="assets/images/photo-05.jpg" alt="EPM XXV photo 5" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>ADD PHOTO<br>photo-05.jpg</div>'"><figcaption>05 — DETAILS</figcaption></figure>
+          <figure class="gallery-item"><img src="assets/images/photo-06.jpg" alt="EPM XXV photo 6" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>ADD PHOTO<br>photo-06.jpg</div>'"><figcaption>06 — AFTER HOURS</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-no">03 / MOVING IMAGE</div><h2>Watch it<br>in motion.</h2></div>
+          <p class="section-note">To embed a YouTube video, replace VIDEO_ID in the iframe URL with the ID from your video's link.</p>
+        </div>
+        <div class="video-grid reveal">
+          <div class="video-box">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="EPM XXV featured YouTube video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">FEATURED VIDEO — REPLACE VIDEO_ID</div>
+          </div>
+          <div class="video-box">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_2" title="EPM XXV second YouTube video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">LATEST VISUAL — REPLACE VIDEO_ID_2</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listen">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-no">04 / FIND THE SOUND</div><h2>Stream &<br>follow.</h2></div>
+          <p class="section-note">Use your real artist profile links. These buttons currently lead to the platforms' home pages.</p>
+        </div>
+        <div class="streaming-grid reveal">
+          <a class="stream-card" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer"><div><strong>Spotify</strong><span>Listen to the releases</span></div><b class="arrow">↗</b></a>
+          <a class="stream-card" href="https://music.apple.com/" target="_blank" rel="noopener noreferrer"><div><strong>Apple Music</strong><span>Play the music</span></div><b class="arrow">↗</b></a>
+          <a class="stream-card" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><div><strong>YouTube</strong><span>Videos and official audio</span></div><b class="arrow">↗</b></a>
+          <a class="stream-card" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><div><strong>Instagram</strong><span>Follow the visual diary</span></div><b class="arrow">↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid reveal">
+        <div><div class="section-no">05 / THE ARTIST</div><h2>More than<br>music.</h2></div>
+        <div>
+          <div class="about-stamp">EPM<br>XXV<span style="color:white">.</span></div>
+          <p class="about-text">EPM XXV is an independent artist building a world through sound, imagery and creative expression. This space brings together the music, the moments behind it and the visual language that makes it personal.<br><br>Replace this paragraph with your real biography, hometown, influences and story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact-grid reveal">
+        <div><div class="section-no">06 / GET IN TOUCH</div><h2>Let's make<br>something.</h2><p class="muted">For bookings, collaborations, press or other enquiries.</p></div>
+        <div>
+          <form class="contact-form" id="contactForm">
+            <input id="senderName" name="name" placeholder="Your name" autocomplete="name" required>
+            <input id="senderEmail" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+            <textarea id="senderMessage" name="message" placeholder="Tell me what you have in mind..." required></textarea>
+            <button class="btn" type="submit">Prepare email ↗</button>
+            <p class="form-note">This free form opens your email app; it does not send or store messages on this website. Add your real email address in the script below.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <a class="brand" href="#home">EPM <span style="color:var(--red)">XXV</span></a>
+      <div>© <span id="year"></span> EPM XXV · INDEPENDENT BY DESIGN</div>
+      <div class="socials"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a></div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded photo">
+    <button id="closeLightbox" aria-label="Close photo">CLOSE ✕</button>
+    <img id="lightboxImage" alt="Expanded EPM XXV photo">
+  </div>
+
+  <script>
+    // EDIT THIS: put your real contact email address between the quotes.
+    const CONTACT_EMAIL = "your-email@example.com";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navlinks = document.getElementById("navlinks");
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navlinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+    navlinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navlinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }));
+
+    // Scroll reveal animation, with a fallback for browsers without IntersectionObserver.
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    // Gallery lightbox.
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    document.querySelectorAll(".gallery-item img").forEach(img => {
+      img.addEventListener("click", () => {
+        if (!img.complete || !img.naturalWidth) return;
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add("open");
+      });
+    });
+    function closeLightbox() { lightbox.classList.remove("open"); lightboxImage.src = ""; }
+    document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeLightbox(); });
+
+    // Contact form uses the visitor's own email application; no paid form service is required.
+    document.getElementById("contactForm").addEventListener("submit", event => {
+      event.preventDefault();
+      if (!CONTACT_EMAIL || CONTACT_EMAIL === "your-email@example.com") {
+        alert("Website setup needed: edit index.html and replace CONTACT_EMAIL with your real email address.");
+        return;
+      }
+      const name = document.getElementById("senderName").value.trim();
+      const email = document.getElementById("senderEmail").value.trim();
+      const message = document.getElementById("senderMessage").value.trim();
+      const subject = encodeURIComponent("Website enquiry from " + name);
+      const body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message);
+      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>
